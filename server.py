@@ -11,13 +11,12 @@ PROTOCOL = "UDP" #can be UDP or TCP
 	
 class Server:
 
-	def __init__(self, port, protocol, packet_size, description="", timeout=10):
+	def __init__(self, port, protocol, packet_size, timeout=10):
 	
 		self.port = port
 		self.protocol = protocol
 		self.packet_size = packet_size
 		self.timeout = timeout
-		self.history = []
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		self.sock.bind((self.local_ip, self.port))
 		self.sock.setblocking(0)
@@ -58,7 +57,7 @@ class Server:
 	def run(self):
 		
 		threading.Thread(target=self.run_daemon, daemon=True).start()
-		print(f"Server is running on port: {self.port} and external ip: {self.external_ip}")
+		print(f"Server is running on port: {self.port}")
 
 	
 if __name__ == "__main__":
