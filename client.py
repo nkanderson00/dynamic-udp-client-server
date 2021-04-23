@@ -6,7 +6,7 @@ import threading
 
 
 PACKET_SIZE = 256
-ADDRESS = "108.3.171.105"
+ADDRESS = ""
 PORT = 42069
 send_delay = 0.01
 
@@ -21,7 +21,8 @@ def listener(client, container):
 			data = packet.decode(client.recv(PACKET_SIZE))
 			print(int(time.time()*1000), "SERVER RESPONSE:", data)
 			container.value = data
-		except: pass
+		except:
+			pass
 		
 		
 def sender(client, container):
